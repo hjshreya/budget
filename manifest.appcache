@@ -1,0 +1,10 @@
+CACHE MANIFEST
+# 2018-10-15:v1.1
+
+CACHE:
+manifest.json
+favicon.png
+index.htm
+css/main.css
+js/main.js
+js/en.json
