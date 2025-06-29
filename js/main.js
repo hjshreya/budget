@@ -1,3 +1,5 @@
+let langSetting = 'js/en.json', lang;
+
 function init() {
   days = lang.day;
   months = lang.month;
