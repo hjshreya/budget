@@ -15,7 +15,7 @@ function init() {
 
   id = localStorage.ultimoid ? localStorage.getItem("ultimoid") : 1;
 
-  if (lang.id !== "pt-br") translateGUI();
+  if (lang.id !== "en") translateGUI();
 
   retrieveExpenses();
   retrieveCategories();
