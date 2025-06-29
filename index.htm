@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Budget</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="shortcut icon" href="favicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script type="application/javascript" src="js/main.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Navigation Menu -->
+    <div id="menu">
+      <input type="button" id="expensesTabBtn" value="Expenses" onClick="navigateTo('expensesTab');">
+      <input type="button" id="entryTabBtn" value="Add Entry" onClick="navigateTo('entryTab');">
+      <input type="button" id="settingsTabBtn" value="Settings" onClick="navigateTo('settingsTab');">
+    </div>
+
+    <!-- Add Entry Tab -->
+    <div id="entryTab" class="tab">
+      <form id="entryForm">
+        <div class="row">
+          <input type="number" id="amountInput" placeholder="0.00" autocomplete="off" onKeyUp="predictCategory();" onChange="predictCategory();">
+        </div>
+        <div class="row">
+          <select id="locationSelect"></select>
+          <input type="button" value="Ok" onClick="addExpense();">
+        </div>
+      </form>
+    </div>
+
+    <!-- Expenses Tab -->
+    <div id="expensesTab" class="tab">
+      <div id="expensesContent" class="content"></div>
+      <div id="deleteExpenseBox" class="deleteButtonBox">
+        <input type="button" id="deleteExpenseBtn" value="Delete" onClick="removeExpense();">
+      </div>
+    </div>
+
+    <!-- Settings Tab -->
+    <div id="settingsTab" class="tab">
+      <div id="settingsPanel">
+        <input type="button" id="categoriesTabBtn" value="Categories" onClick="navigateTo('categoriesTab');" class="btn" />
+        <input type="button" id="resetBtn" value="Reset" onClick="resetApp();" class="btn" style="margin-top: 0.2em;" />
+      </div>
+    </div>
+
+    <!-- Categories Tab -->
+    <div id="categoriesTab" class="tab">
+      <div class="row">
+        <form id="categoryForm">
+          <input type="text" id="categoryInput" placeholder="Category" />
+          <input type="button" id="addCategoryBtn" value="+" onClick="saveCategory();" />
+        </form>
+      </div>
+      <div id="categoriesContent" class="content"></div>
+      <div class="deleteButtonBox">
+        <input type="button" value="Delete" id="deleteCategoryBtn" onClick="removeCategory();" />
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Background Overlay -->
+  <div id="backdrop"></div>
+
+  <!-- Alert Modal -->
+  <div id="alertBox">
+    <div id="alertMessage"></div>
+    <div id="alertButton">
+      <input type="button" value="Ok!" onClick="showAlert('hide');" />
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmBox">
+    <form id="confirmForm">
+      <div id="confirmMessage"></div>
+      <div id="confirmButtons">
+        <input type="button" value="Cancel" id="cancelConfirmBtn" onClick="toggleConfirm('hide');" />
+        <input type="button" value="Ok!" id="confirmOkBtn" />
+      </div>
+    </form>
+  </div>
+</body>
+</html>
